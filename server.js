@@ -1,9 +1,11 @@
-import React from 'react'
+const express = require('express')
+const app = express()
+const expressLayouts = require('express-ejs-layouts')
 
-const server = () => {
-  return (
-    <div>server</div>
-  )
-}
+app.server('view-engine', 'ejs')
+app.set('views', __dirname + '/views')
+app.set('layout', 'layouts/layout')
+app.use(expressLayouts)
+app.use(express.static('public')) 
 
-export default server
+app.listen(process.env.PORT || 3000)
